@@ -20,6 +20,7 @@ export function CustomDrawer({isOpened, children, setState}: any) {
         setState((prev: boolean) => !prev)
         return true;
     }, []);
+
     return (
         <>
             <Drawer
@@ -28,7 +29,7 @@ export function CustomDrawer({isOpened, children, setState}: any) {
                 openedStateMode={isLarge ? 'shrink' : 'overlap'}
                 revealMode={isXSmall ? 'slide' : 'expand'}
                 component={() => <NavigationList/>}
-                opened={isOpened}
+                opened={isOpened === MenuStatus.Closed ? false : true}
                 shading={isXSmall ? true:false}
                 closeOnOutsideClick={onOutsideClick}
                 >
