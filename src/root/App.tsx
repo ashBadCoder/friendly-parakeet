@@ -21,7 +21,6 @@ const MenuStatus = {
 function App() {
 
     const drawerRef = useRef(null);
-    // const [isOpened, setState] = useState(false);
     const { isLarge, isXSmall } = useScreenSize();
     const [menuStatus, setMenuStatus] = useState(
         isLarge ? MenuStatus.Opened : MenuStatus.Closed
@@ -59,22 +58,9 @@ function App() {
   return (
     <div className={styles.App}>
         <CustomToolBar toggleMenu={toggleMenu}/>
-        <Drawer
-            position={'before'}
-            closeOnOutsideClick={onOutsideClick}
-            openedStateMode={isLarge ? 'shrink' : 'overlap'}
-            revealMode={isXSmall ? 'slide' : 'expand'}
-            minSize={isXSmall ? 0 : 37}
-            maxSize={200}
-            shading={isLarge ? false : true}
-            opened={menuStatus === MenuStatus.Closed ? false : true}
-            template={'menu'}
-        >
-            <Template name={'menu'}>
-                <NavigationList onNavigationChanged={onNavigationChanged}/>
-            </Template>
+        <CustomDrawer menuStatus={menuStatus} onOutsideClick={onOutsideClick} onNavigationChanged={onNavigationChanged}>
             <MapComponent/>
-        </Drawer>
+        </CustomDrawer>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import {NavigationList} from "./navigationsList/NavigationsList";
 import {MapComponent} from "../mapComponent/MapComponent";
 import {useScreenSize} from "../../utils/media-query";
 import {Template} from "devextreme-react";
-
+import {ItemClickEvent} from "devextreme/ui/list";
 
 
 const MenuStatus = {
@@ -14,21 +14,35 @@ const MenuStatus = {
 };
 
 
-export function CustomDrawer({menuStatus, onOutsideClick, children, ...props}: {menuStatus: any, children: any,onOutsideClick: () => boolean}) {
+export function CustomDrawer(
+    {   menuStatus,
+        onOutsideClick,
+        children,
+        onNavigationChanged,
+        ...props } : {
+        menuStatus: any;
+        children: any;
+        onOutsideClick: () => boolean;
+        onNavigationChanged:({ event }: ItemClickEvent ) => void; }
+    ) {
     const { isXSmall, isLarge } = useScreenSize();
 
     return (
         <>
             <Drawer
-                minSize={isXSmall ? 0 : 37}
-                height={'100%'}
+                position={'before'}
+                closeOnOutsideClick={onOutsideClick}
                 openedStateMode={isLarge ? 'shrink' : 'overlap'}
                 revealMode={isXSmall ? 'slide' : 'expand'}
-                component={() => <div>component</div>}
-                // opened={isOpened === MenuStatus.Closed ? false : true}
-                shading={isXSmall ? true:false}
-                closeOnOutsideClick={onOutsideClick}
-                >
+                minSize={isXSmall ? 0 : 37}
+                maxSize={200}
+                shading={isLarge ? false : true}
+                opened={menuStatus === MenuStatus.Closed ? false : true}
+                template={'menu'}
+            >
+                <Template name={'menu'}>
+                    <NavigationList onNavigationChanged={onNavigationChanged}/>
+                </Template>
                 {children}
             </Drawer>
         </>
