@@ -3,6 +3,7 @@ import React, {useCallback, useState} from 'react';
 import {NavigationList} from "./navigationsList/NavigationsList";
 import {MapComponent} from "../mapComponent/MapComponent";
 import {useScreenSize} from "../../utils/media-query";
+import {Template} from "devextreme-react";
 
 
 
@@ -13,13 +14,8 @@ const MenuStatus = {
 };
 
 
-export function CustomDrawer({isOpened, children, setState}: any) {
+export function CustomDrawer({menuStatus, onOutsideClick, children, ...props}: {menuStatus: any, children: any,onOutsideClick: () => boolean}) {
     const { isXSmall, isLarge } = useScreenSize();
-
-    const onOutsideClick = useCallback(() => {
-        setState((prev: boolean) => !prev)
-        return true;
-    }, []);
 
     return (
         <>
@@ -28,8 +24,8 @@ export function CustomDrawer({isOpened, children, setState}: any) {
                 height={'100%'}
                 openedStateMode={isLarge ? 'shrink' : 'overlap'}
                 revealMode={isXSmall ? 'slide' : 'expand'}
-                component={() => <NavigationList/>}
-                opened={isOpened === MenuStatus.Closed ? false : true}
+                component={() => <div>component</div>}
+                // opened={isOpened === MenuStatus.Closed ? false : true}
                 shading={isXSmall ? true:false}
                 closeOnOutsideClick={onOutsideClick}
                 >

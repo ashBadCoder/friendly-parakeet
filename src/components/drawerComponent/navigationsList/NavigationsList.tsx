@@ -8,7 +8,7 @@ export const authRoutes = [
     {id: '2', caption: 'второй', icon: 'favorites'},
     {id: '3', caption: 'первый', icon: 'find',}
 ]
-export const NavigationList = () => {
+export const NavigationList = ({onNavigationChanged}: {onNavigationChanged: any}) => {
     const loadView = (e: any) => {
         if (!e.addedItems.length || e.addedItems[0].path === '/reference/:id') return;
         // history.push(e.addedItems[0].path);
@@ -19,13 +19,16 @@ export const NavigationList = () => {
     })
 
     return (
+
         <div className={'sideBar-links-container'}>
             <List
                 className={'sideBar-links-mainLinks'}
                 items={resultedItems}
                 width={200}
                 selectionMode="single"
-                onSelectionChanged={loadView}/>
+                onSelectionChanged={loadView}
+                onItemClick={onNavigationChanged}
+            />
             <Button
                 className={'sideBar-links-footer'}
                 stylingMode={'outlined'}
@@ -33,5 +36,6 @@ export const NavigationList = () => {
                 width={200}
             />
         </div>
+
     );
 }

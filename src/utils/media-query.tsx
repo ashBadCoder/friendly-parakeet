@@ -55,7 +55,6 @@ const unsubscribe = (handler: any) => {
 };
 
 function getScreenSize() {
-    console.log('get screenSize')
     return {
         isXSmall: xSmallMedia.matches,
         isSmall: smallMedia.matches,

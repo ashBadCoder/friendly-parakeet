@@ -22,10 +22,7 @@ const textBoxOptions = {
 export const CustomToolBar = (props: ToolbarProps) => {
     const menuButton = {
         icon: 'contentlayout',
-        onClick() {
-            console.log('click')
-            props.toggleMenu((prev: boolean) => !prev );
-        }
+        onClick: props.toggleMenu
     };
 
     return <>
