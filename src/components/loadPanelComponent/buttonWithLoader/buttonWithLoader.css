@@ -1,0 +1,12 @@
+#button,
+#button .dx-button-content {
+    padding: 0;
+}
+#button .button-indicator {
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+

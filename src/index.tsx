@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './root/App';
 import reportWebVitals from './reportWebVitals';
+import {CustomLoadPanel} from "./components/loadPanelComponent/CustomLoadPanel";
+import 'devextreme/dist/css/dx.light.css';
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

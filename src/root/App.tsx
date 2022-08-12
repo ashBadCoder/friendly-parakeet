@@ -1,16 +1,13 @@
-import React, {useCallback, useMemo, useRef, useState} from 'react';
-
+import React, {useCallback, useRef, useState} from 'react';
 import {CustomToolBar} from "../components/toolbarComponent/CustomToolBar";
-import {CustomDrawer} from "../components/drawerComponent/CustomeDrawer";
-import {MapComponent} from "../components/mapComponent/MapComponent";
-
-import 'devextreme/dist/css/dx.light.css';
-import styles from './App.module.css';
 import {useScreenSize} from "../utils/media-query";
-import Drawer from "devextreme-react/drawer";
-import {NavigationList} from "../components/drawerComponent/navigationsList/NavigationsList";
-import {Template} from "devextreme-react";
 import {ItemClickEvent} from "devextreme/ui/list";
+import {SlowedComponent} from "../components/slowedComponent/SlowedComponent";
+
+import styles from './App.module.css';
+import {CustomDrawer} from "../components/drawerComponent/CustomeDrawer";
+import {CustomLoadPanel} from "../components/loadPanelComponent/CustomLoadPanel";
+import {MapComponent} from "../components/mapComponent/MapComponent";
 
 const MenuStatus = {
     Closed: 1,
@@ -59,7 +56,9 @@ function App() {
     <div className={styles.App}>
         <CustomToolBar toggleMenu={toggleMenu}/>
         <CustomDrawer menuStatus={menuStatus} onOutsideClick={onOutsideClick} onNavigationChanged={onNavigationChanged}>
-            <MapComponent/>
+            {/*<MapComponent/>*/}
+            <CustomLoadPanel/>
+            {/*<SlowedComponent/>*/} {/* todo почему внутри drawer  не работает*/}
         </CustomDrawer>
     </div>
   );
