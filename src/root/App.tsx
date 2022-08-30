@@ -8,6 +8,7 @@ import styles from './App.module.css';
 import {CustomDrawer} from "../components/drawerComponent/CustomeDrawer";
 import {CustomLoadPanel} from "../components/loadPanelComponent/CustomLoadPanel";
 import {MapComponent} from "../components/mapComponent/MapComponent";
+import {CustomDataGrid} from "../components/dataGridComponent/CustomeDataGrid";
 
 const MenuStatus = {
     Closed: 1,
@@ -57,7 +58,8 @@ function App() {
         <CustomToolBar toggleMenu={toggleMenu}/>
         <CustomDrawer menuStatus={menuStatus} onOutsideClick={onOutsideClick} onNavigationChanged={onNavigationChanged}>
             {/*<MapComponent/>*/}
-            <CustomLoadPanel/>
+            <CustomDataGrid/>
+                {/*<CustomLoadPanel/>*/}
             {/*<SlowedComponent/>*/} {/* todo почему внутри drawer  не работает*/}
         </CustomDrawer>
     </div>
